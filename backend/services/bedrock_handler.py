@@ -1,7 +1,7 @@
 import boto3
 import json
 
-session = boto3.Session(profile_name="propbot")
+dynamodb = boto3.resource("dynamodb", region_name="ap-south-1")
 bedrock = session.client("bedrock-runtime", region_name="us-east-1")
 
 def analyze_listing_with_claude(text: str) -> str:
