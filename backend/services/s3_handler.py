@@ -5,8 +5,8 @@ import os
 BUCKET_NAME = "propbot-uploads-shaniya"
 REGION = "ap-south-1"
 
-session = boto3.Session(profile_name="propbot")
-s3 = session.client("s3", region_name=REGION)
+# ✅ Use default session
+s3 = boto3.client("s3", region_name=REGION)
 
 def upload_file_to_s3(file_data: bytes, filename: str) -> dict:
     unique_name = f"{uuid.uuid4()}_{filename}"
