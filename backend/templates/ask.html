@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Ask PropBot AI</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Nunito', sans-serif;
+      color: #ffffff;
+    }
+
+    .bg-landing {
+      background-image: url("{{ url_for('static', filename='images/ask-bg.jpg') }}");
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+    }
+
+    header {
+      background-color: rgba(0, 0, 0, 0.6);
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 26px;
+      font-weight: bold;
+      color: #cff0ff;
+    }
+
+    nav a {
+      margin-left: 20px;
+      color: #ffffff;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      color: #cff0ff;
+    }
+
+    .ask-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      padding: 80px 20px;
+    }
+
+    .ask-box {
+      background-color: #ffffff;
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      max-width: 600px;
+      width: 100%;
+      color: #1c1362;
+    }
+
+    .ask-box h2 {
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    textarea {
+      width: 100%;
+      height: 120px;
+      padding: 15px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-family: 'Nunito', sans-serif;
+      font-size: 16px;
+      resize: vertical;
+      margin-bottom: 20px;
+    }
+
+    button {
+      padding: 10px 24px;
+      background-color: #1c1362;
+      color: #ffffff;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    button:hover {
+      background-color: #302a85;
+    }
+
+    .response-box {
+      margin-top: 30px;
+      background-color: #cff0ff;
+      color: #1c1362;
+      padding: 20px;
+      border-left: 6px solid #1c1362;
+      border-radius: 8px;
+    }
+
+    footer {
+      background-color: rgba(0, 0, 0, 0.6);
+      color: #ccc;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      width: 100%;
+    }
+
+    .social-icons i {
+      margin: 0 10px;
+      color: #cff0ff;
+      cursor: pointer;
+    }
+
+    .social-icons i:hover {
+      color: #ffffff;
+    }
+  </style>
+</head>
+<body class="bg-landing">
+  <header>
+    <div class="logo">PropBot</div>
+    <nav>
+      <a href="/">Home</a>
+      <a href="/upload">Upload</a>
+      <a href="/ask">Ask AI</a>
+    </nav>
+  </header>
+
+  <div class="ask-container">
+    <div class="ask-box">
+      <h2>Ask PropBot AI</h2>
+      <form action="/ask" method="post">
+        <textarea name="question" placeholder="Ask something like: What is the ROI on this property?..." required></textarea>
+        <br>
+        <button type="submit">Ask</button>
+      </form>
+
+      {% if answer %}
+      <div class="response-box">
+        <strong>PropBot's Answer:</strong>
+        <p>{{ answer }}</p>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+
+  <footer>
+    <div class="social-icons">
+      <i class="fab fa-twitter"></i>
+      <i class="fab fa-instagram"></i>
+      <i class="fab fa-facebook-f"></i>
+    </div>
+    <p>&copy; All rights reserved</p>
+  </footer>
+</body>
+</html>

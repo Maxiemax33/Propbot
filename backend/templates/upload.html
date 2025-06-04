@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Upload Property | PropBot</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Nunito', sans-serif;
+      color: #ffffff;
+    }
+
+    .bg-landing {
+      background-image: url("{{ url_for('static', filename='images/upload-bg.jpg') }}");
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+    }
+
+    header {
+      background-color: rgba(0, 0, 0, 0.6);
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 26px;
+      font-weight: bold;
+      color: #cff0ff;
+    }
+
+    nav a {
+      margin-left: 20px;
+      color: #ffffff;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      color: #cff0ff;
+    }
+
+    .upload-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      padding: 80px 20px;
+    }
+
+    .upload-box {
+      background-color: #ffffff;
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      max-width: 500px;
+      width: 100%;
+      text-align: center;
+      color: #1c1362;
+    }
+
+    .upload-box h2 {
+      margin-bottom: 30px;
+    }
+
+    input[type="file"] {
+      margin-bottom: 20px;
+    }
+
+    button {
+      padding: 10px 24px;
+      background-color: #1c1362;
+      color: #ffffff;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    button:hover {
+      background-color: #302a85;
+    }
+
+    .result-box {
+      margin-top: 40px;
+      background-color: #cff0ff;
+      color: #1c1362;
+      padding: 20px;
+      border-left: 6px solid #1c1362;
+      text-align: left;
+      border-radius: 8px;
+      max-width: 500px;
+      width: 100%;
+    }
+
+    footer {
+      background-color: rgba(0, 0, 0, 0.6);
+      color: #ccc;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      position: relative;
+      bottom: 0;
+      width: 100%;
+    }
+
+    .social-icons i {
+      margin: 0 10px;
+      color: #cff0ff;
+      cursor: pointer;
+    }
+
+    .social-icons i:hover {
+      color: #ffffff;
+    }
+  </style>
+</head>
+<body class="bg-landing">
+  <header>
+    <div class="logo">PropBot</div>
+    <nav>
+      <a href="/">Home</a>
+      <a href="/upload">Upload</a>
+      <a href="/ask">Ask AI</a>
+    </nav>
+  </header>
+
+  <div class="upload-container">
+    <div class="upload-box">
+      <h2>Upload Property Listing</h2>
+      <form action="/upload/" method="post" enctype="multipart/form-data">
+        <input type="file" name="file" accept=".txt" required>
+        <br>
+        <button type="submit">Upload</button>
+      </form>
+    </div>
+
+    {% if listing_id %}
+    <div class="result-box">
+      <p><strong>Listing ID:</strong> {{ listing_id }}</p>
+      <p><strong>S3 URL:</strong> <a href="{{ s3_url }}" target="_blank">{{ s3_url }}</a></p>
+      <p><strong>Status:</strong> Uploaded</p>
+    </div>
+    {% endif %}
+  </div>
+
+  <footer>
+    <div class="social-icons">
+      <i class="fab fa-twitter"></i>
+      <i class="fab fa-instagram"></i>
+      <i class="fab fa-facebook-f"></i>
+    </div>
+    <p>&copy; All rights reserved</p>
+  </footer>
+</body>
+</html>
