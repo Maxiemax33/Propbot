@@ -1,8 +1,8 @@
 import boto3
 import json
 
-dynamodb = boto3.resource("dynamodb", region_name="ap-south-1")
-bedrock = session.client("bedrock-runtime", region_name="us-east-1")
+
+bedrock = boto3.client("bedrock-runtime", region_name="us-east-1")
 
 def analyze_listing_with_claude(text: str) -> str:
     prompt = f"""Human: You are a real estate investment advisor. Analyze the following property listing and summarize:
