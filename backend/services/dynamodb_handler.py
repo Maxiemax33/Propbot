@@ -4,7 +4,6 @@ from datetime import datetime
 
 # Use your named profile
 dynamodb = boto3.resource("dynamodb", region_name="ap-south-1")
-dynamodb = session.resource("dynamodb")
 table = dynamodb.Table("propbot_listings")
 
 def save_listing_metadata(s3_url: str, filename: str):
