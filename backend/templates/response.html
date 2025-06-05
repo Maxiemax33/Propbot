@@ -127,7 +127,10 @@
       📄 <a href="{{ s3_url }}" target="_blank">View Uploaded Listing</a>
     </div>
 
-    <a href="/ask?listing_id={{ listing_id }}" class="talk-more-btn">Talk More with PropBot</a>
+    <form action="/ask" method="get">
+      <button class="talk-btn">Talk more with PropBot</button>
+    </form>
+
   </div>
 
   <footer class="footer">
