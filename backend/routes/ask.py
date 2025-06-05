@@ -3,7 +3,7 @@ from services.gemini_handler import ask_question_about_listing
 
 ask_bp = Blueprint('ask_bp', __name__)
 
-@ask_bp.route("/ask", methods=["GET", "POST"])
+@ask_bp.route("/", methods=["GET", "POST"])
 def ask():
     if request.method == "POST":
         listing = request.form.get("listing")
