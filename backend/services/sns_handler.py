@@ -3,7 +3,7 @@ import boto3
 TOPIC_ARN = "arn:aws:sns:ap-south-1:072244248629:propbot-risk-alerts"
 
 
-sns = boto3.client("sns", region_name="ap-south-1")
+sns = boto3.client("sns")
 
 def send_risk_alert(listing_id, summary):
     message = f"⚠️ Risk Alert for Listing ID: {listing_id}\n\n{summary}"
