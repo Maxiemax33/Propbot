@@ -11,14 +11,12 @@
       font-family: 'Nunito', sans-serif;
       color: #ffffff;
     }
-
     .bg-landing {
       background-image: url("{{ url_for('static', filename='images/ask-bg.jpg') }}");
       background-size: cover;
       background-position: center;
       background-attachment: fixed;
     }
-
     header {
       background-color: rgba(0, 0, 0, 0.6);
       padding: 20px 40px;
@@ -26,24 +24,20 @@
       justify-content: space-between;
       align-items: center;
     }
-
     .logo {
       font-size: 26px;
       font-weight: bold;
       color: #cff0ff;
     }
-
     nav a {
       margin-left: 20px;
       color: #ffffff;
       text-decoration: none;
       font-weight: bold;
     }
-
     nav a:hover {
       color: #cff0ff;
     }
-
     .ask-container {
       display: flex;
       justify-content: center;
@@ -51,7 +45,6 @@
       flex-direction: column;
       padding: 80px 20px;
     }
-
     .ask-box {
       background-color: #ffffff;
       padding: 40px;
@@ -61,15 +54,12 @@
       width: 100%;
       color: #1c1362;
     }
-
     .ask-box h2 {
       margin-bottom: 20px;
       text-align: center;
     }
-
-    textarea {
+    textarea, input {
       width: 100%;
-      height: 120px;
       padding: 15px;
       border-radius: 8px;
       border: 1px solid #ccc;
@@ -78,7 +68,6 @@
       resize: vertical;
       margin-bottom: 20px;
     }
-
     button {
       padding: 10px 24px;
       background-color: #1c1362;
@@ -88,11 +77,9 @@
       cursor: pointer;
       font-weight: bold;
     }
-
     button:hover {
       background-color: #302a85;
     }
-
     .response-box {
       margin-top: 30px;
       background-color: #cff0ff;
@@ -101,7 +88,6 @@
       border-left: 6px solid #1c1362;
       border-radius: 8px;
     }
-
     footer {
       background-color: rgba(0, 0, 0, 0.6);
       color: #ccc;
@@ -110,13 +96,11 @@
       font-size: 14px;
       width: 100%;
     }
-
     .social-icons i {
       margin: 0 10px;
       color: #cff0ff;
       cursor: pointer;
     }
-
     .social-icons i:hover {
       color: #ffffff;
     }
@@ -136,8 +120,8 @@
     <div class="ask-box">
       <h2>Ask PropBot AI</h2>
       <form action="/ask" method="post">
-        <textarea name="question" placeholder="Ask something like: What is the ROI on this property?..." required></textarea>
-        <br>
+        <textarea name="listing" placeholder="Paste the property summary here..." required>{{ listing }}</textarea>
+        <textarea name="question" placeholder="Ask something like: What is the ROI on this property?..." required>{{ question }}</textarea>
         <button type="submit">Ask</button>
       </form>
 
@@ -145,6 +129,10 @@
       <div class="response-box">
         <strong>PropBot's Answer:</strong>
         <p>{{ answer }}</p>
+      </div>
+      {% elif error %}
+      <div class="response-box" style="background-color: #fdd; color: red;">
+        <strong>Error:</strong> {{ error }}
       </div>
       {% endif %}
     </div>
