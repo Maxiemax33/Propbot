@@ -44,6 +44,7 @@
       align-items: center;
       flex-direction: column;
       padding: 80px 20px;
+      background-color: rgba(0, 0, 0, 0.3);
     }
     .ask-box {
       background-color: #ffffff;
@@ -67,15 +68,19 @@
       font-size: 16px;
       resize: vertical;
       margin-bottom: 20px;
+      min-height: 100px;
     }
     button {
-      padding: 10px 24px;
+      display: block;
+      margin: 0 auto;
+      padding: 12px 28px;
       background-color: #1c1362;
       color: #ffffff;
       border: none;
       border-radius: 6px;
       cursor: pointer;
       font-weight: bold;
+      font-size: 16px;
     }
     button:hover {
       background-color: #302a85;
@@ -87,6 +92,14 @@
       padding: 20px;
       border-left: 6px solid #1c1362;
       border-radius: 8px;
+    }
+    .error-box {
+      background-color: #fdd;
+      color: red;
+      padding: 20px;
+      border-left: 6px solid red;
+      border-radius: 8px;
+      margin-top: 30px;
     }
     footer {
       background-color: rgba(0, 0, 0, 0.6);
@@ -131,7 +144,7 @@
         <p>{{ answer }}</p>
       </div>
       {% elif error %}
-      <div class="response-box" style="background-color: #fdd; color: red;">
+      <div class="error-box">
         <strong>Error:</strong> {{ error }}
       </div>
       {% endif %}
