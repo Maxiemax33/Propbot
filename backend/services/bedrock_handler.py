@@ -2,7 +2,7 @@ import boto3
 import json
 
 
-bedrock = boto3.client("bedrock-runtime", region_name="us-east-1")
+bedrock = boto3.client("bedrock-runtime", region_name="ap-south-1")
 
 def analyze_listing_with_claude(text: str) -> str:
     prompt = f"""Human: You are a real estate investment advisor. Analyze the following property listing and summarize:
@@ -24,7 +24,7 @@ Assistant:"""
     }
 
     response = bedrock.invoke_model(
-        modelId="anthropic.claude-3-sonnet-20240229-v1:0",
+        modelId="anthropic.claude-sonnet-4-20250514-v1:0",
         body=json.dumps(body),
         contentType="application/json",
         accept="application/json"
