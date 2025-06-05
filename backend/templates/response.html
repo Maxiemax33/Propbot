@@ -76,16 +76,20 @@
 
     .talk-more-btn {
       display: block;
-      margin: 30px auto 10px;
-      padding: 12px 24px;
+      margin: 40px auto 10px;
+      padding: 14px 28px;
       background-color: #1c1362;
       color: #cff0ff;
       border: none;
-      border-radius: 6px;
+      border-radius: 8px;
+      font-size: 16px;
       font-weight: bold;
       cursor: pointer;
-      text-align: center;
-      text-decoration: none;
+      transition: background-color 0.3s ease;
+    }
+
+    .talk-more-btn:hover {
+      background-color: #312a80;
     }
 
     .footer {
@@ -128,9 +132,9 @@
     </div>
 
     <form action="/ask" method="get">
-      <button class="talk-btn">Talk more with PropBot</button>
+      <input type="hidden" name="listing" value="{{ summary }}">
+      <button class="talk-more-btn">Talk more with PropBot</button>
     </form>
-
   </div>
 
   <footer class="footer">
@@ -144,3 +148,4 @@
 
 </body>
 </html>
+
